@@ -13,17 +13,17 @@ $.ajaxPrefilter(function(pa) {
         }
     }
 
-    //// 3.登录拦截
-    //  options.complete = function(res) {
-    //      var obj = res.responseJSON
-    //      if(obj.status !== 0 && obj.message === '身份认证失败！') {
-    //      //// 1 . 强制清空 token
-    //      localStorage.removeItem('token')
-    //      //// 2 . 强制跳转到登录页
-    //      location.href = '/login.html'
-    // }
-    //  }
-//     options.complete = function(res) {
+    // 3.登录拦截
+     pa.complete = function(pa) {
+         var obj = pa.responseJSON
+         if(obj.status !== 0 && obj.message === '身份认证失败！') {
+         //// 1 . 强制清空 token
+         localStorage.removeItem('token')
+         //// 2 . 强制跳转到登录页
+         location.href = '/login.html'
+    }
+     }
+//     pa.complete = function(res) {
 //             console.log(1249135024);
 //             //// 在complete 函数中，可以使用 res.responseJSON 拿到响应回来的数据
 //             if(res.responseJSON.status !== 0 && res.responseJSON.message === '身份认证失败！'){
